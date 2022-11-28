@@ -40,4 +40,3 @@ public class ArraylarinOrtakElemaniniBulma {
 
     }
 }
-//practice day 7 ** 1:38
