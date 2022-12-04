@@ -50,10 +50,9 @@ public class Kisi {
 
     @Override
     public String toString() {
-        return "Kisi{" +
+        return
                 "isim='" + isim + '\'' +
                 ", SoyIsim='" + SoyIsim + '\'' +
-                ", yas=" + yas +
-                '}';
+                ", yas=" + yas;
     }
 }

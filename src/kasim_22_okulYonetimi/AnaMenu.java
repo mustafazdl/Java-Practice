@@ -12,7 +12,7 @@ public class AnaMenu {
  Q- ÇIKIŞ
      */
     void anaMenu(){
-        System.out.println("====================================\n" +
+        System.out.print("====================================\n" +
                 "ÖĞRENCİ VE ÖĞRETMEN YÖNETİM PANELİ\n"  +
                 "====================================\n" +
                 "1- ÖĞRENCİ İŞLEMLERİ\n"  +
@@ -25,12 +25,21 @@ public class AnaMenu {
             char secim=scan.next().toUpperCase().charAt(0);
             switch (secim){
                 case '1':{
+                    OgrenciMenu ogrMenu=new OgrenciMenu();
+                    ogrMenu.ogrMenu();
 
                 }
                 case '2':{
+                    OgretmenMenu ogrtMenu=new OgretmenMenu();
+
+                    ogrtMenu.ogretmenMenu();
+
 
                 }
                 case 'Q':{
+
+                    System.out.println("GULE GULE");
+                    System.exit(0);
 
                 }
                 default:{

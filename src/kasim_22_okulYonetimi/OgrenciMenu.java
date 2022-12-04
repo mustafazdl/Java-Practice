@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class OgrenciMenu implements IIslemler {
 
-    ArrayList<Ogrenci> ogrencilist=new ArrayList<>();
+    ArrayList<Ogrenci> ogrenciList=new ArrayList<>();
     Scanner scan = new Scanner(System.in);
     void ogrMenu() {
         System.out.print("============= İŞLEMLER =============\n" +
@@ -52,50 +52,47 @@ public class OgrenciMenu implements IIslemler {
 
             @Override
             public void ekleme () {
-                System.out.println("İsim giriniz: ");
+                System.out.print("İsim giriniz: ");
+                scan.nextLine();
                 String isim =scan.nextLine();
-                System.out.println("Soyisim giriniz: ");
+                System.out.print("Soyisim giriniz: ");
                 String soyIsim =scan.nextLine();
-                System.out.println("Tc No giriniz: ");
+                System.out.print("Tc No giriniz: ");
                 String tcNo =scan.next();
-                System.out.println("Yas giriniz: ");
+                System.out.print("Yas giriniz: ");
                 int yas =scan.nextInt();
-                System.out.println("Sinif giriniz: ");
+                System.out.print("Sinif giriniz: ");
                 String sinif =scan.next();
-                System.out.println("Ogrenci No giriniz: ");
+                System.out.print("Ogrenci No giriniz: ");
                 int ogrNo =scan.nextInt();
                 Ogrenci ogrenci=new Ogrenci(isim,soyIsim,tcNo,yas,sinif,ogrNo);
-                ogrencilist.add(ogrenci);
+                ogrenciList.add(ogrenci);
                 ogrMenu();
 
             }
 
             @Override
-            public void arama () {
-        if (!ogrencilist.isEmpty()){
-            System.out.print("Arama yapilacak Tc no giriniz: ");
-            String aranacakTc=scan.next();
-            for (Ogrenci each:ogrencilist) {
-                if(each.getTcNo().equals(aranacakTc)){
-                    System.out.println(each.toString());
-                }else {
-                    System.out.println(aranacakTc + "Tc no ya ait bilgi bulunamadı. ");
+            public void arama() {
+                if (!ogrenciList.isEmpty()) {
+                    System.out.print("Aranacak TC No giriniz: ");
+                    String aranacakTcNo = scan.next();
+                    for (int i = 0; i < ogrenciList.size(); i++) {
+                        if (ogrenciList.get(i).getTcNo().equals(aranacakTcNo)) {
+                            System.out.println(ogrenciList.get(i));
+                        }
+                    }
+                    ogrMenu();
+                } else {
+                    System.out.println("Ogrenci Listesi boş");
                     ogrMenu();
                 }
-
-            }
-            ogrMenu();
-        }else{
-            System.out.println("Ogrenci listesi bos");
-            ogrMenu();
-        }
 
             }
 
             @Override
             public void listeleme () {
-            if(!ogrencilist.isEmpty()){
-                for (Ogrenci each:ogrencilist) {
+            if(!ogrenciList.isEmpty()){
+                for (Ogrenci each:ogrenciList) {
                     System.out.println(each.toString());
                 }
                 ogrMenu();
@@ -107,12 +104,13 @@ public class OgrenciMenu implements IIslemler {
 
             @Override
             public void silme () {
-                if (!ogrencilist.isEmpty()){
+                if (!ogrenciList.isEmpty()){
                     System.out.print("Silme yapilacak Tc no giriniz: ");
                     String aranacakTc=scan.next();
-                    for (int i = 0; i <ogrencilist.size() ; i++) {
-                        if(aranacakTc.equals(ogrencilist.get(i).getTcNo())){
-                            ogrencilist.remove(i);
+                    for (int i = 0; i <ogrenciList.size() ; i++) {
+                        if(aranacakTc.equals(ogrenciList.get(i).getTcNo())){
+                            ogrenciList.remove(i);
+                            System.out.println("TC NO'LU OGRENCİ SILINDI");
                             ogrMenu();
                         }
                     }
